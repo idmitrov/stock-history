@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as stockHistoryActions from '../actions/sotckHistoryActions';
 
+import {
+    Button,
+    CircularProgress,
+    MenuItem,
+    Select
+} from '@material-ui/core'
+
+import { Row, Col } from 'reactstrap';
+
 import LineChart from '../components/chart/LineChart';
-// import CandleStickChart from '../components/chart/CandleStickChart';
 
 const dataSetOptions = {
     label: 'OHLC Average',
@@ -36,29 +44,43 @@ class Dashboard extends Component {
             <section>
                 <h2>Dashboard</h2>
 
-                <select disabled={this.props.loading} value={this.props.stockHistorySymbol} onChange={this.props.changeStockHistorySymbol}>
-                    <option value="GOOG">Google</option>
-                    <option value="MSFT">Microsoft</option>
-                    <option value="FB">Facebook</option>
-                </select>
+                <Row className="justify-content-center">
+                    <Col md="auto">
+                        <Select
+                            value={this.props.stockHistorySymbol}
+                            disabled={this.props.loading}
+                            onChange={this.props.changeStockHistorySymbol}>
+                            <MenuItem value="GOOG">Google</MenuItem>
+                            <MenuItem value="MSFT">Microsoft</MenuItem>
+                            <MenuItem value="FB">Facebook</MenuItem>
+                        </Select>
+                    </Col>
 
-                <select disabled={this.props.loading} value={this.props.stockHistoryMode} onChange={this.props.changeStockHistoryMode}>
-                    <option value="daily">Daily</option>
-                    <option value="weekly">Weekly</option>
-                    <option value="monthly">Monthly</option>
-                </select>
+                    <Col md="auto">
+                        <Select
+                            value={this.props.stockHistoryMode}
+                            disabled={this.props.loading}
+                            onChange={this.props.changeStockHistoryMode}>
+                            <MenuItem value="daily">Daily</MenuItem>
+                            <MenuItem value="weekly">Weekly</MenuItem>
+                            <MenuItem value="monthly">Monthly</MenuItem>
+                        </Select>
+                    </Col>
 
-                <button disabled={this.props.loading} onClick={this.props.fetchStockHistory}>Apply</button>
+                    <Col md="auto">
+                        <Button color="primary" variant="contained" disabled={this.props.loading} onClick={this.props.fetchStockHistory}>Apply</Button>
+                    </Col>
 
-                {
-                    this.props.loading ? (
-                        <p>Loading...</p>
-                    ) : (
-                        <div>
-                            <LineChart data={this.props.stockHistoryData}></LineChart>
-                        </div>
-                    )
-                }
+                    <Col md="12">
+                        {
+                            this.props.loading ? (
+                                <CircularProgress />
+                            ) : (
+                                <LineChart data={this.props.stockHistoryData}></LineChart>
+                            )
+                        }
+                    </Col>
+                </Row>
             </section>
         );
     }

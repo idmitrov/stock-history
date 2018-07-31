@@ -11,7 +11,7 @@ class App extends Component {
                     <h1 className="App-title">Stock history</h1>
                 </header>
 
-                <main>
+                <main className="App-content container-fluid">
                     <Routes />
                 </main>
             </div>

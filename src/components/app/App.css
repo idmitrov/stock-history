@@ -20,3 +20,8 @@ html {
 .App-intro {
     font-size: 1.6rem;
 }
+
+.App-content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
