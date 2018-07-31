@@ -34,6 +34,18 @@ const dataSetOptions = {
     pointHitRadius: 10
 };
 
+const availableSymbols = [
+    { name: 'Google', code: 'GOOG' },
+    { name: 'Microsoft', code: 'MSFT' },
+    { name: 'FB', code: 'Facebook' }
+]
+
+const availableModes = [
+    { name: 'Daily', code: 'daily' },
+    { name: 'Weekly', code: 'weekly' },
+    { name: 'Monthly', code: 'monthly' }
+];
+
 class Dashboard extends Component {
     componentDidMount() {
         this.props.fetchStockHistory();
@@ -50,9 +62,11 @@ class Dashboard extends Component {
                             value={this.props.stockHistorySymbol}
                             disabled={this.props.loading}
                             onChange={this.props.changeStockHistorySymbol}>
-                            <MenuItem value="GOOG">Google</MenuItem>
-                            <MenuItem value="MSFT">Microsoft</MenuItem>
-                            <MenuItem value="FB">Facebook</MenuItem>
+                            {
+                                availableSymbols.map((symbol) =>
+                                    <MenuItem key={symbol.name} value={symbol.code}>{symbol.name}</MenuItem>
+                                )
+                            }
                         </Select>
                     </Col>
 
@@ -61,9 +75,11 @@ class Dashboard extends Component {
                             value={this.props.stockHistoryMode}
                             disabled={this.props.loading}
                             onChange={this.props.changeStockHistoryMode}>
-                            <MenuItem value="daily">Daily</MenuItem>
-                            <MenuItem value="weekly">Weekly</MenuItem>
-                            <MenuItem value="monthly">Monthly</MenuItem>
+                            {
+                                availableModes.map((mode) =>
+                                    <MenuItem key={mode.name} value={mode.code}>{mode.name}</MenuItem>
+                                )
+                            }
                         </Select>
                     </Col>
 
