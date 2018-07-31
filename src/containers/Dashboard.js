@@ -93,7 +93,7 @@ class Dashboard extends Component {
                     <Col md="auto">
                         <Row className="align-items-center no-gutters">
                             <Col md="auto">
-                                <Typography>Full output</Typography>
+                                <Typography>Compact output</Typography>
                             </Col>
 
                             <Col md="auto">
@@ -106,7 +106,7 @@ class Dashboard extends Component {
                             </Col>
 
                             <Col md="auto">
-                                <Typography>Compact output</Typography>
+                                <Typography>Full output</Typography>
                             </Col>
                         </Row>
                     </Col>
