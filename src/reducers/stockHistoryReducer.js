@@ -49,6 +49,12 @@ export const stockHistoryReducer = (state = stockHistoryDefaults, action) => {
                 data: timeSeriesArray
             }
         }
+        case stockHistoryActionTypes.setStockHistoryOutputType: {
+            return {
+                ...state,
+                outputType: action.payload.type
+            }
+        }
         default: return state;
     }
 }

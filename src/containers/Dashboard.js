@@ -6,7 +6,9 @@ import {
     Button,
     CircularProgress,
     MenuItem,
-    Select
+    Select,
+    Switch,
+    Typography
 } from '@material-ui/core'
 
 import { Row, Col } from 'reactstrap';
@@ -35,15 +37,20 @@ const dataSetOptions = {
 };
 
 const availableSymbols = [
-    { name: 'Google', code: 'GOOG' },
-    { name: 'Microsoft', code: 'MSFT' },
-    { name: 'FB', code: 'Facebook' }
+    { name: 'Google', value: 'GOOG' },
+    { name: 'Microsoft', value: 'MSFT' },
+    { name: 'FB', value: 'Facebook' }
 ]
 
 const availableModes = [
-    { name: 'Daily', code: 'daily' },
-    { name: 'Weekly', code: 'weekly' },
-    { name: 'Monthly', code: 'monthly' }
+    { name: 'Daily', value: 'daily' },
+    { name: 'Weekly', value: 'weekly' },
+    { name: 'Monthly', value: 'monthly' }
+];
+
+const availableOutputTypes = [
+    { name: 'Full', value: 'full' },
+    { name: 'Compact', value: 'compact' }
 ];
 
 class Dashboard extends Component {
@@ -56,7 +63,7 @@ class Dashboard extends Component {
             <section>
                 <h2>Dashboard</h2>
 
-                <Row className="justify-content-center">
+                <Row className="justify-content-center align-items-center">
                     <Col md="auto">
                         <Select
                             value={this.props.stockHistorySymbol}
@@ -64,7 +71,7 @@ class Dashboard extends Component {
                             onChange={this.props.changeStockHistorySymbol}>
                             {
                                 availableSymbols.map((symbol) =>
-                                    <MenuItem key={symbol.name} value={symbol.code}>{symbol.name}</MenuItem>
+                                    <MenuItem key={symbol.name} value={symbol.value}>{symbol.name}</MenuItem>
                                 )
                             }
                         </Select>
@@ -77,10 +84,31 @@ class Dashboard extends Component {
                             onChange={this.props.changeStockHistoryMode}>
                             {
                                 availableModes.map((mode) =>
-                                    <MenuItem key={mode.name} value={mode.code}>{mode.name}</MenuItem>
+                                    <MenuItem key={mode.name} value={mode.value}>{mode.name}</MenuItem>
                                 )
                             }
                         </Select>
+                    </Col>
+
+                    <Col md="auto">
+                        <Row className="align-items-center no-gutters">
+                            <Col md="auto">
+                                <Typography>Full output</Typography>
+                            </Col>
+
+                            <Col md="auto">
+                                <Switch
+                                    color="primary"
+                                    value={this.props.outputType}
+                                    checked={this.props.outputType == 'full'}
+                                    onChange={this.props.changeStockHistoryOutputType}>
+                                </Switch>
+                            </Col>
+
+                            <Col md="auto">
+                                <Typography>Compact output</Typography>
+                            </Col>
+                        </Row>
                     </Col>
 
                     <Col md="auto">
@@ -107,6 +135,7 @@ const mapStateToProps = (state) => {
         loading: state.app.loading,
         stockHistoryMode: state.history.mode,
         stockHistorySymbol: state.history.symbol,
+        outputType: state.history.outputType,
         stockHistoryData: () => {
             if (!state.history.data) {
                 return {};
@@ -137,6 +166,11 @@ const mapDispatchToProps = (dispatch) => {
         },
         changeStockHistorySymbol: (e) => {
             return dispatch(stockHistoryActions.setStockHistorySymbol(e.target.value));
+        },
+        changeStockHistoryOutputType: (e) => {
+            let type = e.target.checked ? 'full' : 'compact';
+
+            return dispatch(stockHistoryActions.setStockHistoryOutputType(type));
         }
     };
 }
