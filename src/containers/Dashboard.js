@@ -130,18 +130,16 @@ const mapStateToProps = (state) => {
          * @desc Object[] with data received from stock API
          */
         stockHistoryData: () => {
-            if (!state.history.data) {
-                return {};
-            }
-
-            const data = {
-                labels: state.history.data.map(data => data.date),
-                datasets: [
+            let data = {};
+            
+            if (state.history.data) {
+                data.labels = state.history.data.map(data => data.date);
+                data.datasets = [
                     {
                         ...ohlcLineChartDefaults,
                         data: state.history.data.map(data => data.ohlc)
                     }
-                ]
+                ];
             }
 
             return data;
