@@ -33,12 +33,27 @@ describe('stockHistory reducer', () => {
         };
 
         const receivedState = stockHistoryReducer(stockHistoryDefaults, action);
-        
         const expectedState = {
             ...stockHistoryDefaults,
             symbol: newSymbolValue
         };
 
         expect(receivedState).toEqual(expectedState)
+    });
+
+    it('Change stock output type should set stock outputType state', () => {
+        const newOutputTypeValue = 'full';
+        const action = {
+            type: stockHistoryActionTypes.setStockHistoryOutputType,
+            payload: { outputType: newOutputTypeValue }
+        };
+
+        const receivedState = stockHistoryReducer(stockHistoryDefaults, action);
+        const expectedState = {
+            ...stockHistoryDefaults,
+            outputType: newOutputTypeValue
+        }
+
+        expect(receivedState).toEqual(expectedState);
     });
 });

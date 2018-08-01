@@ -31,9 +31,9 @@ export const setStockHistorySymbol = (symbol) => (dispatch) => {
     });
 }
 
-export const setStockHistoryOutputType = (type) => (dispatch) => {
+export const setStockHistoryOutputType = (outputType) => (dispatch) => {
     return dispatch({
         type: stockHistoryActionTypes.setStockHistoryOutputType,
-        payload: { type }
+        payload: { outputType }
     });
 }

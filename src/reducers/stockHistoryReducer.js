@@ -52,7 +52,7 @@ export const stockHistoryReducer = (state = stockHistoryDefaults, action) => {
         case stockHistoryActionTypes.setStockHistoryOutputType: {
             return {
                 ...state,
-                outputType: action.payload.type
+                outputType: action.payload.outputType
             }
         }
         default: return state;
