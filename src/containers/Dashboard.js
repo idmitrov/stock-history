@@ -100,10 +100,35 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        /**
+         * @name loading
+         * @type {Boolean}
+         * @desc indicate is the application in loading mode e.g fetching data
+         */
         loading: state.app.loading,
+        /**
+         * @name stockHistoryMode
+         * @type {String}
+         * @desc availableStockModes constant value
+         */
         stockHistoryMode: state.history.mode,
+        /** 
+         * @name stockHistorySymbol
+         * @type {String} 
+         * @desc availableStockSymbols constant value
+         */
         stockHistorySymbol: state.history.symbol,
+        /**
+         * @name outputType
+         * @type {String}
+         * @desc availableStockOtputTypes constant value
+         */
         outputType: state.history.outputType,
+        /**
+         * @name stockHistoryData
+         * @type {Array}
+         * @desc Object[] with data received from stock API
+         */
         stockHistoryData: () => {
             if (!state.history.data) {
                 return {};
@@ -126,15 +151,40 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        /**
+         * Dispatch stockHistoryActions.fetchStockHistory
+         * @name fetchStockHistory
+         * @desc dispatch stockHistoryActions.fetchStockHistory
+         */
         fetchStockHistory: () => {
             return dispatch(stockHistoryActions.fetchStockHistory());
         },
+        /**
+         * Dispatch stockHistoryActions.setStockHistoryMode
+         * @name changeStockHistoryMode
+         * @desc Dispatch stockHistoryActions.setStockHistoryMode and pass event.target.value
+         * @param {Event} e
+         */
         changeStockHistoryMode: (e) => {
             return dispatch(stockHistoryActions.setStockHistoryMode(e.target.value));
         },
+        /**
+         * Dispatch stockHistoryActions.setStockHistorySymbol
+         * @name changeStockHistorySymbol
+         * @desc Dispatch stockHistoryActions.setStockHistorySymbol and pass event.target.value
+         * @param {Event} e
+         */
         changeStockHistorySymbol: (e) => {
             return dispatch(stockHistoryActions.setStockHistorySymbol(e.target.value));
         },
+        /**
+         * Dispatch stockHistoryActions.setStockHistoryOutputType
+         * @name changeStockHistoryOutputType
+         * @desc Dispatch stockHistoryActions.setStockHistoryOutputType and pass 
+         * availableStockOutputTypes.full | availableStockOutputTypes.compact
+         * depending on the e.target.checked (true/false)
+         * @param {Event} e
+         */
         changeStockHistoryOutputType: (e) => {
             let outputType = e.target.checked ? availableStockOutputTypes.full : availableStockOutputTypes.compact;
 
