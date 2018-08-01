@@ -1,3 +1,4 @@
+import fetch from 'isomorphic-fetch';
 import { apiConfig } from '../shared/config';
 import * as sharedActions from '../actions/sharedActions';
 

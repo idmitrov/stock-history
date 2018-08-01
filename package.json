@@ -7,6 +7,7 @@
     "@material-ui/icons": "^2.0.0",
     "bootstrap": "^4.1.3",
     "chart.js": "^2.7.2",
+    "enzyme": "^3.3.0",
     "history": "^4.7.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
@@ -24,7 +25,26 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest --coverage",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "modulePaths": [
+      "<rootDir>/src",
+      "<rootDir>/node_modules"
+    ],
+    "verbose": true,
+    "testEnvironment": "node",
+    "globals": {
+      "NODE_ENV": "test"
+    },
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ]
   }
 }

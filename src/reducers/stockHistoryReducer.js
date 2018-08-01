@@ -1,6 +1,6 @@
 import { stockHistoryActionTypes } from "../actions/sotckHistoryActions";
 
-const stockHistoryDefaults = {
+export const stockHistoryDefaults = {
     data: null,
     mode: 'monthly',
     symbol: 'GOOG',

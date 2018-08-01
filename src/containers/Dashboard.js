@@ -48,11 +48,6 @@ const availableModes = [
     { name: 'Monthly', value: 'monthly' }
 ];
 
-const availableOutputTypes = [
-    { name: 'Full', value: 'full' },
-    { name: 'Compact', value: 'compact' }
-];
-
 class Dashboard extends Component {
     componentDidMount() {
         this.props.fetchStockHistory();
@@ -100,7 +95,7 @@ class Dashboard extends Component {
                                 <Switch
                                     color="primary"
                                     value={this.props.outputType}
-                                    checked={this.props.outputType == 'full'}
+                                    checked={this.props.outputType === 'full'}
                                     onChange={this.props.changeStockHistoryOutputType}>
                                 </Switch>
                             </Col>
