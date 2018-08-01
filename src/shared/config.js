@@ -1,7 +1,7 @@
 export const apiConfig = {
     "stock": {
-        "name": "alphavantage",
-        "url": "https://www.alphavantage.co",
-        "key": "0D38J2J5CPCLQDG6"
+        "name": process.env.REACT_APP_STOCK_API_NAME,
+        "url": process.env.REACT_APP_STOCK_API_URL,
+        "key": process.env.REACT_APP_STOCK_API_KEY
     }
 }

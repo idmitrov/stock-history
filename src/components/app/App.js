@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import { config } from 'dotenv';
+
 import Routes from '../../shared/routes';
 
 class App extends Component {
     render() {
+        config();
+        
         return (
             <div className="App">
                 <header className="App-header">
