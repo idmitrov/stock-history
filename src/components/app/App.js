@@ -8,7 +8,7 @@ class App extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    <h1 className="App-title">Stock history</h1>
+                    <h1 className="App-title">{this.props.name}</h1>
                 </header>
 
                 <main className="App-content container-fluid">

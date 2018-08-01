@@ -20,7 +20,7 @@ ReactDOM.render(
     <MuiThemeProvider theme={createMuiTheme()}>
         <Router history={history}>
             <Provider store={store}>
-                <App />
+                <App name="Stock history" />
             </Provider>
         </Router>
     </MuiThemeProvider>,
