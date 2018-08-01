@@ -10,15 +10,33 @@ describe('stockHistory reducer', () => {
     });
 
     it('Change stock mode should set stock mode state', () => {
+        const newModeValue = 'weekly';
         const action = {
             type: stockHistoryActionTypes.setStockHistoryMode,
-            payload: { mode: 'weekly' }
+            payload: { mode: newModeValue }
         };
 
         const receivedState = stockHistoryReducer(stockHistoryDefaults, action);
         const expectedState = {
             ...stockHistoryDefaults,
-            mode: 'weekly'
+            mode: newModeValue
+        };
+
+        expect(receivedState).toEqual(expectedState)
+    });
+    
+    it('Change stock symbol should set stock symbol state', () => {
+        const newSymbolValue = 'FB';
+        const action = {
+            type: stockHistoryActionTypes.setStockHistorySymbol,
+            payload: { symbol: newSymbolValue }
+        };
+
+        const receivedState = stockHistoryReducer(stockHistoryDefaults, action);
+        
+        const expectedState = {
+            ...stockHistoryDefaults,
+            symbol: newSymbolValue
         };
 
         expect(receivedState).toEqual(expectedState)

@@ -18,7 +18,7 @@ export const stockHistoryReducer = (state = stockHistoryDefaults, action) => {
         case stockHistoryActionTypes.setStockHistorySymbol: {
             return {
                 ...state,
-                symbo: action.payload.symbol
+                symbol: action.payload.symbol
             }
         }
         case stockHistoryActionTypes.setStockHistoryData: {
