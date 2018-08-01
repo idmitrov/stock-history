@@ -3,6 +3,7 @@
 ##### Setup and Run
 -   Yarn install or npm install (install packages)
 -   Yarn start or npm start (serve application)
+-   Yarn test or npm test (Run tests)
 
 ##### Setup Alphavantage
 -   Get your free key from: https://www.alphavantage.co/support/#api-key
