@@ -1,9 +1,10 @@
 import { stockHistoryReducer, stockHistoryDefaults } from '../../src/reducers/stockHistoryReducer';
 
 describe('stockHistory reducer', () => {
-    it('has a default state', () => {
-        let expectedState = stockHistoryReducer(undefined, { type: 'unknown' });
+    it('Pass unknown action should return default state', () => {
+        const unknownAction = { type: 'unknown' };
+        const receivedState = stockHistoryReducer(stockHistoryDefaults, unknownAction);
         
-        expect(expectedState).toEqual(stockHistoryDefaults);
+        expect(receivedState).toEqual(stockHistoryDefaults);
     });
 });

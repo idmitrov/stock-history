@@ -1,6 +1,6 @@
 import { sharedActionTypes } from '../actions/sharedActions';
 
-const appDefaults = {
+export const appDefaults = {
     loading: false
 };
 
