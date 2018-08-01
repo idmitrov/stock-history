@@ -1,3 +1,7 @@
+/**
+ * @name stockHistoryActionTypes
+ * @desc All action types related to stockHistory actions 
+ */
 export const stockHistoryActionTypes = {
     fetchStockHistory: 'STOCK_HISTORY_FETCH',
     setStockHistoryData: 'STOCK_HISTORY_DATA_SET',
@@ -6,6 +10,10 @@ export const stockHistoryActionTypes = {
     setStockHistoryOutputType: 'STOCK_HISTORY_OUTPUT_TYPE_SET'
 };
 
+/**
+ * @name fetchStockHistory
+ * @desc Dispatch stockHistoryActionTypes.fetchStockHistory
+ */
 export const fetchStockHistory = () => (dispatch, getState) => {
     let { mode, outputType, symbol } = getState().history;
 
@@ -17,6 +25,11 @@ export const fetchStockHistory = () => (dispatch, getState) => {
     });
 }
 
+/**
+ * @name setStockHistoryMode
+ * @desc Dispatch stockHistoryActionTypes.setStockHistoryMode with given mode value
+ * @param {String} mode 
+ */
 export const setStockHistoryMode = (mode) => (dispatch) => {
     return dispatch({
         type: stockHistoryActionTypes.setStockHistoryMode,
@@ -24,6 +37,11 @@ export const setStockHistoryMode = (mode) => (dispatch) => {
     });
 }
 
+/**
+ * @name setStockHistorySymbol
+ * @desc Dispatch stockHistoryActionTypes.setStockHistorySymbol with given symbol value
+ * @param {String} symbol 
+ */
 export const setStockHistorySymbol = (symbol) => (dispatch) => {
     return dispatch({
         type: stockHistoryActionTypes.setStockHistorySymbol,
@@ -31,6 +49,11 @@ export const setStockHistorySymbol = (symbol) => (dispatch) => {
     });
 }
 
+/**
+ * @name setStockHistoryOutputType
+ * @desc Dispatch stockHistoryActionTypes.setStockHistoryOutputType with given outputType value
+ * @param {String} outputType 
+ */
 export const setStockHistoryOutputType = (outputType) => (dispatch) => {
     return dispatch({
         type: stockHistoryActionTypes.setStockHistoryOutputType,
