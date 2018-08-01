@@ -39,7 +39,7 @@ const dataSetOptions = {
 const availableSymbols = [
     { name: 'Google', value: 'GOOG' },
     { name: 'Microsoft', value: 'MSFT' },
-    { name: 'FB', value: 'Facebook' }
+    { name: 'Facebook', value: 'FB' }
 ]
 
 const availableModes = [
