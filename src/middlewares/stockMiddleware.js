@@ -8,6 +8,11 @@ const FUNCTION_MAP = {
     monthly: 'TIME_SERIES_MONTHLY'
 }
 
+/**
+ * @name stockMiddleware
+ * @desc Middleware used to fetch stock API data
+ * @param {String} action
+ */
 const stockMiddleware = (store) => (next) => (action) => {
     if (action.meta && action.meta.api && action.meta.api === 'stock') {
         store.dispatch(sharedActions.setLoading(true));
