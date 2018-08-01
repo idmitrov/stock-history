@@ -1,5 +1,6 @@
 import { stockHistoryReducer, stockHistoryDefaults } from '../../src/reducers/stockHistoryReducer';
 import { stockHistoryActionTypes } from '../../src/actions/sotckHistoryActions';
+import { availableStockOutputTypes, availableStockModes, availableStockSymbols } from '../../src/shared/constants';
 
 describe('stockHistory reducer', () => {
     it('Pass unknown action should return default state', () => {
@@ -10,7 +11,7 @@ describe('stockHistory reducer', () => {
     });
 
     it('Change stock mode should set stock mode state', () => {
-        const newModeValue = 'weekly';
+        const newModeValue = availableStockModes[0].value;
         const action = {
             type: stockHistoryActionTypes.setStockHistoryMode,
             payload: { mode: newModeValue }
@@ -26,7 +27,7 @@ describe('stockHistory reducer', () => {
     });
     
     it('Change stock symbol should set stock symbol state', () => {
-        const newSymbolValue = 'FB';
+        const newSymbolValue = availableStockSymbols[0].value;
         const action = {
             type: stockHistoryActionTypes.setStockHistorySymbol,
             payload: { symbol: newSymbolValue }
@@ -42,16 +43,15 @@ describe('stockHistory reducer', () => {
     });
 
     it('Change stock output type should set stock outputType state', () => {
-        const newOutputTypeValue = 'full';
         const action = {
             type: stockHistoryActionTypes.setStockHistoryOutputType,
-            payload: { outputType: newOutputTypeValue }
+            payload: { outputType: availableStockOutputTypes.full }
         };
 
         const receivedState = stockHistoryReducer(stockHistoryDefaults, action);
         const expectedState = {
             ...stockHistoryDefaults,
-            outputType: newOutputTypeValue
+            outputType: availableStockOutputTypes.full
         }
 
         expect(receivedState).toEqual(expectedState);
